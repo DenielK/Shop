@@ -12,7 +12,6 @@ namespace ShopTARgv24.ApplicationServices.Services
             string apiKey = "ed3e4f63f449d55db36bcca01f78ba34";
             string url = $"https://api.openweathermap.org/data/2.5/weather?q={dto.Name}&appid={apiKey}&units=metric";
             
-
             using (WebClient client = new WebClient())
             {
                 string json = client.DownloadString(url);
