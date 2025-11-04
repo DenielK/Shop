@@ -34,7 +34,6 @@ namespace ShopTARgv24.ApplicationServices.Services
             domain.CreatedAt = DateTime.Now;
             domain.ModifiedAt = DateTime.Now;
 
-            //peaks kontrollima, kas on faile v]i ei ole
             if (dto.Files != null)
             {
                 _fileServices.UploadFilesToDatabase(dto, domain);
@@ -82,6 +81,5 @@ namespace ShopTARgv24.ApplicationServices.Services
 
             return result;
         }
-
     }
 }
