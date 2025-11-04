@@ -1,4 +1,6 @@
-﻿namespace ShopTARgv24.Core.Dto.OpenWeatherDto
+﻿using System.Drawing;
+
+namespace ShopTARgv24.Core.Dto.OpenWeatherDto
 {
     public class OpenWeatherResultDto
     {

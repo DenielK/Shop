@@ -129,3 +129,4 @@ namespace ShopTARgv24.Core.Dto.OpenWeatherDto
         public long Deg { get; set; }
     }
 }
+

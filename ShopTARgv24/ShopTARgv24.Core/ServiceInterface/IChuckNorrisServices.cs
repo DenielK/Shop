@@ -1,10 +1,9 @@
-﻿using ShopTARgv24.Core.Dto;
-using System.Threading.Tasks;
+﻿using ShopTARgv24.Core.Dto.ChuckNorris;
 
 namespace ShopTARgv24.Core.ServiceInterface
 {
     public interface IChuckNorrisServices
     {
-        Task<ChuckNorrisJokeDto> GetRandomJoke();
+        Task<ChuckNorrisResultDto> ChuckNorrisResult(ChuckNorrisResultDto dto);
     }
 }
