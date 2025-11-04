@@ -51,43 +51,41 @@ namespace ShopTARgv24.Data.Migrations
                     b.Property<string>("ImageTitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("KindergartenId")
+                    b.Property<Guid?>("RealEstateId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("KindergartenId");
-
-                    b.ToTable("KindergartenFileToDatabase");
+                    b.ToTable("FileToDatabases");
                 });
 
-            modelBuilder.Entity("ShopTARgv24.Core.Domain.Kindergarten", b =>
+            modelBuilder.Entity("ShopTARgv24.Core.Domain.RealEstate", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("ChildrenCount")
-                        .HasColumnType("int");
+                    b.Property<double?>("Area")
+                        .HasColumnType("float");
+
+                    b.Property<string>("BuildingType")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("GroupName")
+                    b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("KindergartenName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TeacherName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("RoomNumber")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Kindergartens");
+                    b.ToTable("RealEstate");
                 });
 
             modelBuilder.Entity("ShopTARgv24.Core.Domain.Spaceship", b =>
@@ -126,21 +124,6 @@ namespace ShopTARgv24.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Spaceships");
-                });
-
-            modelBuilder.Entity("ShopTARgv24.Core.Domain.FileToDatabase", b =>
-                {
-                    b.HasOne("ShopTARgv24.Core.Domain.Kindergarten", "Kindergarten")
-                        .WithMany("Files")
-                        .HasForeignKey("KindergartenId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Kindergarten");
-                });
-
-            modelBuilder.Entity("ShopTARgv24.Core.Domain.Kindergarten", b =>
-                {
-                    b.Navigation("Files");
                 });
 #pragma warning restore 612, 618
         }

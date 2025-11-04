@@ -19,7 +19,16 @@ namespace ShopTARgv24
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<ISpaceshipsServices, SpaceshipsServices>();
             builder.Services.AddScoped<IFileServices, FileServices>();
-            builder.Services.AddScoped<IKindergartenServices, KindergartenServices>();
+            builder.Services.AddScoped<IRealEstateServices, RealEstateServices>();
+            builder.Services.AddScoped<IWeatherForecastServices, WeatherForecastServices>();
+            // WebClient for ChuckNorrisServices
+            builder.Services.AddScoped<IChuckNorrisServices, ChuckNorrisServices>();
+            //HttpClient for ChuckNorrisServices
+            builder.Services.AddHttpClient<IChuckNorrisServices, ChuckNorrisServices>();
+            // HttpClient for CocktailServices
+            builder.Services.AddHttpClient<ICocktailService, CocktailService>();
+            // WebClient for OpenWeatherServices
+            builder.Services.AddScoped<IOpenWeatherServices, OpenWeatherServices>();
 
             var app = builder.Build();
 
@@ -30,6 +39,8 @@ namespace ShopTARgv24
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseStaticFiles();
 
             app.UseHttpsRedirection();
             app.UseRouting();
