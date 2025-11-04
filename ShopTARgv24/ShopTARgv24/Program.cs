@@ -19,7 +19,7 @@ namespace ShopTARgv24
             builder.Services.AddDbContext<ShopTARgv24Context>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            var app = builder.Build();
+            var app = GetApp(builder);
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -41,6 +41,11 @@ namespace ShopTARgv24
                 .WithStaticAssets();
 
             app.Run();
+
+            static WebApplication GetApp(WebApplicationBuilder builder)
+            {
+                return builder.Build();
+            }
         }
     }
 }
