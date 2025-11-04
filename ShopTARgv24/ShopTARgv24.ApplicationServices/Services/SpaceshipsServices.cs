@@ -26,7 +26,6 @@ namespace ShopTARgv24.ApplicationServices.Services
         {
             Spaceship spaceship = new Spaceship();
 
-            
             spaceship.Id = Guid.NewGuid();
             spaceship.Name = dto.Name;
             spaceship.TypeName = dto.TypeName;

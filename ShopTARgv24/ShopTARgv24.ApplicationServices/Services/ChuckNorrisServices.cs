@@ -1,44 +1,31 @@
-﻿using ShopTARgv24.Core.Dto;
+﻿using ShopTARgv24.Core.Dto.ChuckNorris;
 using ShopTARgv24.Core.ServiceInterface;
-using System.Net.Http;
-using System.Text.Json;
-using System.Threading.Tasks;
+using Nancy.Json;
+using System.Net;
 
 namespace ShopTARgv24.ApplicationServices.Services
 {
     public class ChuckNorrisServices : IChuckNorrisServices
     {
-        private readonly HttpClient _httpClient;
 
-        public ChuckNorrisServices(HttpClient httpClient)
+        public async Task<ChuckNorrisResultDto> ChuckNorrisResult(ChuckNorrisResultDto dto)
         {
-            _httpClient = httpClient;
-        }
+            var url = "https://api.chucknorris.io/jokes/random";
 
-        public async Task<ChuckNorrisJokeDto> GetRandomJoke()
-        {
-         
-            var request = new HttpRequestMessage(HttpMethod.Get, "https://api.chucknorris.io/jokes/random");
-
-         
-            request.Headers.Add("User-Agent", "ShopTARgv24-App");
-
-            var response = await _httpClient.SendAsync(request);
-
-            if (response.IsSuccessStatusCode)
+            using (WebClient client = new WebClient())
             {
-                var jsonString = await response.Content.ReadAsStringAsync();
-
-           
-                var jokeDto = JsonSerializer.Deserialize<ChuckNorrisJokeDto>(jsonString, new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
-                return jokeDto;
+                string json = client.DownloadString(url);
+                ChuckNorrisRootDto chuckNorrisResult = new JavaScriptSerializer().Deserialize<ChuckNorrisRootDto>(json);
+                
+                dto.CreatedAt = chuckNorrisResult.CreatedAt;
+                dto.IconUrl = chuckNorrisResult.IconUrl;
+                dto.Id = chuckNorrisResult.Id;
+                dto.UpdatedAt = chuckNorrisResult.UpdatedAt;
+                dto.Url = chuckNorrisResult.Url;
+                dto.Value = chuckNorrisResult.Value;
             }
 
-            
-            return null;
+            return dto;
         }
     }
 }

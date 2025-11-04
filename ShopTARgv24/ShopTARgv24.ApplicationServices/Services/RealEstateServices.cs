@@ -34,6 +34,7 @@ namespace ShopTARgv24.ApplicationServices.Services
             domain.CreatedAt = DateTime.Now;
             domain.ModifiedAt = DateTime.Now;
 
+            //peaks kontrollima, kas on faile v]i ei ole
             if (dto.Files != null)
             {
                 _fileServices.UploadFilesToDatabase(dto, domain);
@@ -54,7 +55,7 @@ namespace ShopTARgv24.ApplicationServices.Services
             domain.Location = dto.Location;
             domain.RoomNumber = dto.RoomNumber;
             domain.BuildingType = dto.BuildingType;
-            domain.CreatedAt = DateTime.Now;
+            domain.CreatedAt = dto.CreatedAt;
             domain.ModifiedAt = DateTime.Now;
 
             _context.RealEstate.Update(domain);
@@ -81,5 +82,6 @@ namespace ShopTARgv24.ApplicationServices.Services
 
             return result;
         }
+
     }
 }

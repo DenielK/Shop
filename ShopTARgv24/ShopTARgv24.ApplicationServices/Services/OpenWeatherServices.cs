@@ -1,7 +1,7 @@
 ﻿using Nancy.Json;
-using ShopTARgv24.Core.Dto.OpenWeatherDto;
 using ShopTARgv24.Core.ServiceInterface;
 using System.Net;
+using ShopTARgv24.Core.Dto.OpenWeatherDto;
 
 namespace ShopTARgv24.ApplicationServices.Services
 {
@@ -9,8 +9,9 @@ namespace ShopTARgv24.ApplicationServices.Services
     {
         public async Task<OpenWeatherResultDto> GetOpenWeatherResult(OpenWeatherResultDto dto)
         {
-            string apiKey = "ad210ec18b32fb4a2daa481a7f1f6aff";
+            string apiKey = "ed3e4f63f449d55db36bcca01f78ba34";
             string url = $"https://api.openweathermap.org/data/2.5/weather?q={dto.Name}&appid={apiKey}&units=metric";
+            
 
             using (WebClient client = new WebClient())
             {

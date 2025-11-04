@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using ShopTARgv24.Core.Domain;
 using ShopTARgv24.Core.Dto;
@@ -114,7 +115,7 @@ namespace ShopTARgv24.ApplicationServices.Services
                         file.CopyTo(target);
                         files.ImageData = target.ToArray();
 
-                        _context.FileToDatabases.Add(files);
+                        _context.FileToDatabase.Add(files);
                     }
                 }
             }
