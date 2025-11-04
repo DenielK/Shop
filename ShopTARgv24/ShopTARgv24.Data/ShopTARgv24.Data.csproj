@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+    <Compile Remove="MigrationsOld\**" />
+    <EmbeddedResource Remove="MigrationsOld\**" />
+    <None Remove="MigrationsOld\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8">
       <PrivateAssets>all</PrivateAssets>
@@ -23,5 +28,6 @@
   <ItemGroup>
     <ProjectReference Include="..\ShopTARgv24.Core\ShopTARgv24.Core.csproj" />
   </ItemGroup>
+
 
 </Project>

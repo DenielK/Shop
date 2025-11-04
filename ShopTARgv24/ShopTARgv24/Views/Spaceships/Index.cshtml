@@ -1,15 +1,8 @@
 ﻿@model IEnumerable<ShopTARgv24.Models.Spaceships.SpaceshipsIndexViewModel>
 
-    @{
-        int rowNumber = 1;
-    }
-
+<div class="h1 text-center">Spaceships</div>
 <div>
-    <a asp-action="create" asp-controller="spaceships" type="submit" class="btn btn-primary">Create</a>
-</div>
-
-<div class="h1">
-    Spaceships
+    <a asp-action="create" asp-controller="spaceships" type="submit" class="btn btn-primary m-2">Create</a>
 </div>
 <form method="post">
     <table class="table table-hover">
@@ -20,11 +13,14 @@
                 <th scope="col">Type</th>
                 <th scope="col">Build Date</th>
                 <th scope="col">Crew</th>
-                <th scope="col"></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach(var spaceships in Model)
+            @{
+                var rowNumber = 1;
+            }
+            @foreach (var spaceships in Model)
             {
                 <tr>
                     <td>@rowNumber</td>
@@ -33,13 +29,12 @@
                     <td>@spaceships.BuiltDate</td>
                     <td>@spaceships.Crew</td>
                     <td>
-                        <a asp-action="details" asp-controller="spaceships" asp-route-id="@spaceships.Id" class="btn btn-primary">Details</a>
-                        <a asp-action="update" asp-controller="spaceships" asp-route-id="@spaceships.Id" class="btn btn-primary">Update</a>
-                        <a asp-action="delete" asp-controller="spaceships" asp-route-id="@spaceships.Id" class="btn btn-outline-danger">Delete</a>
+                        <a asp-action="details" asp-controller="spaceships" asp-route-id="@spaceships.Id" class="btn btn-secondary">Details</a>
+                        <a asp-action="update" asp-controller="spaceships" asp-route-id="@spaceships.Id" class="btn btn-info">Update</a>
+                        <a asp-action="delete" asp-controller="spaceships" asp-route-id="@spaceships.Id" class="btn btn-outline-danger m-1">Delete</a>
                     </td>
                 </tr>
-
-                rowNumber += 1;
+                rowNumber++;
             }
         </tbody>
     </table>

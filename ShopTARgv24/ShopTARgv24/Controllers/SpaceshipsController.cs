@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using ShopTARgv24.Core.Dto;
 using ShopTARgv24.Core.ServiceInterface;
 using ShopTARgv24.Data;
 using ShopTARgv24.Models.Spaceships;
+using System.Reflection.Metadata;
 
 
 namespace ShopTARgv24.Controllers
@@ -37,15 +39,15 @@ namespace ShopTARgv24.Controllers
 
             return View(result);
         }
-
         [HttpGet]
         public IActionResult Create()
         {
+            ViewBag.Action = "Create";
+
             SpaceshipCreateUpdateViewModel result = new();
 
             return View("CreateUpdate", result);
         }
-
         [HttpPost]
         public async Task<IActionResult> Create(SpaceshipCreateUpdateViewModel vm)
         {
@@ -62,7 +64,6 @@ namespace ShopTARgv24.Controllers
                 CreatedAt = vm.CreatedAt,
                 ModifiedAt = vm.ModifiedAt
             };
-
             var result = await _spaceshipsServices.Create(dto);
 
             if (result == null)
@@ -103,17 +104,14 @@ namespace ShopTARgv24.Controllers
         public async Task<IActionResult> DeleteConfirmation(Guid id)
         {
             var spaceship = await _spaceshipsServices.Delete(id);
-
-            if (spaceship == null)
-            {
+            if (spaceship != null)
                 return RedirectToAction(nameof(Index));
-            }
 
-            return RedirectToAction(nameof(Index));
+            return NotFound();
         }
 
         [HttpGet]
-        public async Task <IActionResult> Update(Guid id)
+        public async Task<IActionResult> Update(Guid id)
         {
             var spaceship = await _spaceshipsServices.DetailAsync(id);
 
@@ -164,6 +162,7 @@ namespace ShopTARgv24.Controllers
 
             return RedirectToAction(nameof(Index), vm);
         }
+
         [HttpGet]
         public async Task<IActionResult> Details(Guid id)
         {

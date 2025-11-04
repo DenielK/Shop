@@ -1,8 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using ShopTARgv24.ApplicationServices.Services;
 using ShopTARgv24.Core.ServiceInterface;
+using ShopTARgv24.ApplicationServices.Services;
 using ShopTARgv24.Data;
-
 namespace ShopTARgv24
 {
     public class Program
@@ -11,15 +10,18 @@ namespace ShopTARgv24
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
-
-            builder.Services.AddScoped<ISpaceshipsServices, SpaceshipsServices>();
+            //builder.Services.AddScoped< SpaceshipServices>();
 
             builder.Services.AddDbContext<ShopTARgv24Context>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            var app = GetApp(builder);
+            // Add services to the container.
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<ISpaceshipsServices, SpaceshipsServices>();
+            builder.Services.AddScoped<IFileServices, FileServices>();
+            builder.Services.AddScoped<IKindergartenServices, KindergartenServices>();
+
+            var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -41,11 +43,6 @@ namespace ShopTARgv24
                 .WithStaticAssets();
 
             app.Run();
-
-            static WebApplication GetApp(WebApplicationBuilder builder)
-            {
-                return builder.Build();
-            }
         }
     }
 }
