@@ -1,0 +1,18 @@
+﻿using System;
+using ShopTARgv24.Models.Kindergartens;
+
+namespace ShopTARgv24.Models.Kindergartens
+{
+    public class KindergartenDetailsViewModel
+    {
+        public Guid? Id { get; set; }
+        public string GroupName { get; set; }
+        public int? ChildrenCount { get; set; }
+        public string KindergartenName { get; set; }
+        public string TeacherName { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
+
+        public KindergartenImageViewModel[] Image { get; set; } = Array.Empty<KindergartenImageViewModel>();
+    }
+}

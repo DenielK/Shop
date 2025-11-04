@@ -1,0 +1,81 @@
+﻿@model ShopTARgv24.Models.Kindergartens.KindergartenDetailsViewModel
+
+<div class="container mt-5">
+    <div class="col-lg-8 mx-auto">
+        <div class="card shadow-lg border-0 rounded-3">
+            <div class="card-header bg-info text-white text-center">
+                <h1>Details</h1>
+            </div>
+            <div class="card-body p-4">
+                <h4>Kindergarten</h4>
+                <hr />
+                <dl class="row">
+                    <div class="form-group row">
+                        <label asp-for="Id" class="col-sm-3 col-form-label fw-bold"></label>
+                        @Html.DisplayFor(Model => Model.Id)
+                    </div>
+                </dl>
+
+                <dl class="row">
+                    <div class="form-group row">
+                        <label asp-for="GroupName" class="col-sm-3 col-form-label fw-bold"></label>
+                        @Html.DisplayFor(Model => Model.GroupName)
+                    </div>
+                </dl>
+
+                <dl class="row">
+                    <div class="form-group row">
+                        <label asp-for="ChildrenCount" class="col-sm-3 col-form-label fw-bold"></label>
+                        @Html.DisplayFor(Model => Model.ChildrenCount)
+                    </div>
+                </dl>
+
+                <dl class="row">
+                    <div class="form-group row">
+                        <label asp-for="KindergartenName" class="col-sm-3 col-form-label fw-bold"></label>
+                        @Html.DisplayFor(Model => Model.KindergartenName)
+                    </div>
+                </dl>
+
+                <dl class="row">
+                    <div class="form-group row">
+                        <label asp-for="TeacherName" class="col-sm-3 col-form-label fw-bold"></label>
+                        @Html.DisplayFor(Model => Model.TeacherName)
+                    </div>
+                </dl>
+
+                <dl class="row">
+                    <div class="form-group row">
+                        <label asp-for="CreatedAt" class="col-sm-3 col-form-label fw-bold"></label>
+                        @Html.DisplayFor(Model => Model.CreatedAt)
+                    </div>
+                </dl>
+
+                <dl class="row">
+                    <div class="form-group row">
+                        <label asp-for="UpdatedAt" class="col-sm-3 col-form-label fw-bold"></label>
+                        @Html.DisplayFor(Model => Model.UpdatedAt)
+                    </div>
+                </dl>
+
+                <hr />
+                <h5>Images</h5>
+
+                @if (Model.Image != null && Model.Image.Any())
+                {
+                    foreach (var images in Model.Image)
+                    {
+                        <partial name="_Images" model="images" />
+                        <br />
+                    }
+                }
+                else
+                {
+                    <p class="text-muted">Pilte pole lisatud.</p>
+                }
+
+                <a asp-action="Index" asp-controller="Kindergartens" class="btn btn-secondary m-2">Back</a>
+            </div>
+        </div>
+    </div>
+</div>
