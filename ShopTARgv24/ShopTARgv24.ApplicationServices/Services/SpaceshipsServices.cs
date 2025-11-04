@@ -15,17 +15,18 @@ namespace ShopTARgv24.ApplicationServices.Services
         public SpaceshipsServices
             (
                 ShopTARgv24Context context,
-                FileServices fileServices
+                IFileServices fileServices
             )
         {
             _context = context;
-            _fileServices = fileServices;
+           _fileServices = fileServices;
         }
 
         public async Task<Spaceship> Create(SpaceshipDto dto)
         {
             Spaceship spaceship = new Spaceship();
 
+            
             spaceship.Id = Guid.NewGuid();
             spaceship.Name = dto.Name;
             spaceship.TypeName = dto.TypeName;
@@ -57,6 +58,16 @@ namespace ShopTARgv24.ApplicationServices.Services
             var spaceship = await _context.Spaceships
                 .FirstOrDefaultAsync(x => x.Id == id);
 
+            var images = await _context.FileToApis
+                .Where(x => x.SpaceshipId == id)
+                .Select(y => new FileToApiDto
+                {
+                    Id = y.Id,
+                    SpaceshipId = y.SpaceshipId,
+                    ExistingFilePath = y.ExistingFilePath
+                }).ToArrayAsync();
+
+            await _fileServices.RemoveImagesFromApi(images);
             _context.Spaceships.Remove(spaceship);
             await _context.SaveChangesAsync();
 
@@ -77,6 +88,7 @@ namespace ShopTARgv24.ApplicationServices.Services
             domain.InnerVolume = dto.InnerVolume;
             domain.CreatedAt = dto.CreatedAt;
             domain.ModifiedAt = DateTime.Now;
+            _fileServices.FilesToApi(dto, domain);
 
             _context.Spaceships.Update(domain);
             await _context.SaveChangesAsync();

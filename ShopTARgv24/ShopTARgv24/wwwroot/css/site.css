@@ -29,3 +29,41 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.btn-primary {
+    background-color: #7c3aed;
+    border-color: #7c3aed;
+}
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+        background-color: #6d28d9;
+        border-color: #6d28d9;
+    }
+
+
+.btn-outline-primary {
+    color: #7c3aed;
+    border-color: #7c3aed;
+}
+
+    .btn-outline-primary:hover,
+    .btn-outline-primary:focus {
+        color: #fff;
+        background-color: #7c3aed;
+        border-color: #7c3aed;
+    }
+
+.btn-back {
+    background-color: #e83e8c; /* розовый */
+    border-color: #e83e8c;
+    color: white;
+    transition: 0.2s ease;
+}
+
+    .btn-back:hover,
+    .btn-back:focus {
+        background-color: #d63384; /* чуть темнее при наведении */
+        border-color: #d63384;
+        color: white;
+    }

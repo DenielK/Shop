@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ShopTARgv24.Core.Domain;
-
+﻿using Microsoft.AspNetCore.Http;
 
 namespace ShopTARgv24.Core.Dto
 {
@@ -15,6 +13,7 @@ namespace ShopTARgv24.Core.Dto
         public int? Passengers { get; set; }
         public int? InnerVolume { get; set; }
 
+        //Tuleb teha muutuja Files ja see peab olema listis
         public List<IFormFile> Files { get; set; }
 
         public IEnumerable<FileToApiDto> FileToApiDtos { get; set; }
