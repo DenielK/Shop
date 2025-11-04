@@ -11,3 +11,5 @@ namespace ShopTARgv24.Core.ServiceInterface
         void UploadFilesToDatabase(RealEstateDto dto, RealEstate domain);
     }
 }
+
+//test
