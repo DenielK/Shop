@@ -1,0 +1,90 @@
+:root {
+    --brand-pink: #e83e8c; /* base */
+    --brand-pink-600: #d63384; /* hover/focus */
+    --brand-pink-700: #c22577; /* active */
+    --brand-pink-100: #ffe3ef; /* soft bg */
+    --ring-pink: rgba(232, 62, 140, .35);
+}
+
+.btn-primary {
+    background-color: var(--brand-pink) !important;
+    border-color: var(--brand-pink) !important;
+}
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+        background-color: var(--brand-pink-600) !important;
+        border-color: var(--brand-pink-600) !important;
+    }
+
+    .btn-primary:active,
+    .btn-primary.active {
+        background-color: var(--brand-pink-700) !important;
+        border-color: var(--brand-pink-700) !important;
+    }
+
+.btn-outline-primary {
+    color: var(--brand-pink) !important;
+    border-color: var(--brand-pink) !important;
+}
+
+    .btn-outline-primary:hover,
+    .btn-outline-primary:focus {
+        color: #fff !important;
+        background-color: var(--brand-pink) !important;
+        border-color: var(--brand-pink) !important;
+    }
+
+    .btn-primary:disabled,
+    .btn-outline-primary:disabled {
+        opacity: .65;
+    }
+
+.btn:focus, .form-control:focus, .form-select:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 .2rem var(--ring-pink) !important;
+    border-color: var(--brand-pink-600) !important;
+}
+
+a, .link-primary {
+    color: var(--brand-pink);
+}
+
+    a:hover, .link-primary:hover {
+        color: var(--brand-pink-600);
+    }
+
+.navbar .nav-link {
+    color: #333;
+}
+
+    .navbar .nav-link:hover,
+    .navbar .nav-link:focus,
+    .navbar .nav-link.active {
+        color: var(--brand-pink) !important;
+    }
+
+.bg-primary, .badge.bg-primary {
+    background-color: var(--brand-pink) !important;
+}
+
+.border-primary {
+    border-color: var(--brand-pink) !important;
+}
+
+.text-primary {
+    color: var(--brand-pink) !important;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--brand-pink) !important;
+    border-color: var(--brand-pink) !important;
+}
+
+.pagination .page-link:focus {
+    box-shadow: 0 0 0 .2rem var(--ring-pink) !important;
+}
+
+.card-header {
+    background: linear-gradient(180deg, var(--brand-pink-100), #fff) !important;
+    border-bottom-color: var(--brand-pink-100) !important;
+}
